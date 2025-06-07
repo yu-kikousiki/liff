@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299.77">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;楽器選択LIFF&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://static.line-scdn.net/liff/edge/2/sdk.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1&gt;使っている楽器を選んでください&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="selectInstrument('サックス')"&gt;サックス&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="selectInstrument('フルート')"&gt;フルート&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="selectInstrument('クラリネット')"&gt;クラリネット&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="selectInstrument(‘ホルン)”&gt;ホルン&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="selectInstrument(‘トランペット’)”&gt;トランペット&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="selectInstrument(‘トロンボーン)”&gt;トロンボーン&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="selectInstrument(‘ユーフォニアム)”&gt;ユーフォニアム&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="selectInstrument(‘チューバ’)”&gt;チューバ&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="selectInstrument(‘コントラバス’)”&gt;コントラバス&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="selectInstrument(‘パーカッション’)”&gt;パーカッション&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// LIFF初期化</p>
+<p class="p1"><span class="Apple-converted-space">    </span>liff.init({ liffId: "あなたのLIFF IDをここに" })</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.then(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!liff.isLoggedIn()) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>liff.login();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 楽器を選んだ時の処理</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function selectInstrument(instrument) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// 選択結果をBotに送信（トーク画面にテキストを送る）</p>
+<p class="p1"><span class="Apple-converted-space">      </span>liff.sendMessages([</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{</p>
+<p class="p1"><span class="Apple-converted-space">          </span>type: "text",</p>
+<p class="p1"><span class="Apple-converted-space">          </span>text: "楽器選択：" + instrument</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>]).then(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>alert(instrument + "を選びました！");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>liff.closeWindow(); // ウィンドウを閉じる</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}).catch((err) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>alert("送信エラー: " + err);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
